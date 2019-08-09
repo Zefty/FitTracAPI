@@ -13052,11 +13052,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jaime\\Documents\\GitHub\\MSA-Phase-2-Project-API\\FitTrac\\FitTrac\\FitTrac.csproj",
+      "projectUniqueName": "C:\\Users\\jaime\\Documents\\GitHub\\MSA-Phase-2-Project-API\\FitTrac\\FitTrac.csproj",
       "projectName": "FitTrac",
-      "projectPath": "C:\\Users\\jaime\\Documents\\GitHub\\MSA-Phase-2-Project-API\\FitTrac\\FitTrac\\FitTrac.csproj",
+      "projectPath": "C:\\Users\\jaime\\Documents\\GitHub\\MSA-Phase-2-Project-API\\FitTrac\\FitTrac.csproj",
       "packagesPath": "C:\\Users\\jaime\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jaime\\Documents\\GitHub\\MSA-Phase-2-Project-API\\FitTrac\\FitTrac\\obj\\",
+      "outputPath": "C:\\Users\\jaime\\Documents\\GitHub\\MSA-Phase-2-Project-API\\FitTrac\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
