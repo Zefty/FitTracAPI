@@ -41,6 +41,20 @@ namespace FitTrac.Controllers
             return exercises;
         }
 
+        // GET: api/Exercises/5
+        [HttpGet("FilterdExercise/")]
+        public async Task<ActionResult<Exercises>> GetFilteredExercises(int WorkoutId)
+        {
+            var exercises = await _context.Exercises.Where(x => x.WorkoutId == WorkoutId).ToListAsync();
+
+            if (exercises == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(exercises);
+        }
+
         // PUT: api/Exercises/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutExercises(int id, Exercises exercises)
