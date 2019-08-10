@@ -47,10 +47,11 @@ namespace FitTrac.Controllers
         {
             if (WorkoutId == -1)
             {
-                var defaultExercise = new Exercises();
-                defaultExercise.ExerciseName = "";
-                defaultExercise.ExerciseReps = 0;
-                defaultExercise.ExerciseSets = 0;
+                Exercises[] defaultExercise = new Exercises[1];
+                defaultExercise[0] = new Exercises();
+                defaultExercise[0].ExerciseName = "";
+                defaultExercise[0].ExerciseReps = 0;
+                defaultExercise[0].ExerciseSets = 0;
                 return Ok(defaultExercise);
             } 
 
