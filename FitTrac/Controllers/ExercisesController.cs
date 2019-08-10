@@ -45,6 +45,15 @@ namespace FitTrac.Controllers
         [HttpGet("FilterdExercise/")]
         public async Task<ActionResult<Exercises>> GetFilteredExercises(int WorkoutId)
         {
+            if (WorkoutId == -1)
+            {
+                var defaultExercise = new Exercises();
+                defaultExercise.ExerciseName = "";
+                defaultExercise.ExerciseReps = 0;
+                defaultExercise.ExerciseSets = 0;
+                return Ok(defaultExercise);
+            } 
+
             var exercises = await _context.Exercises.Where(x => x.WorkoutId == WorkoutId).ToListAsync();
 
             if (exercises == null)
