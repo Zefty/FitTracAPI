@@ -45,7 +45,7 @@ namespace FitTrac.Controllers
         [HttpGet("FilterdExercise/")]
         public async Task<ActionResult<Exercises>> GetFilteredExercises(int WorkoutId)
         {
-            if (WorkoutId == -1)
+            if (WorkoutId == 0)
             {
                 Exercises[] defaultExercise = new Exercises[1];
                 defaultExercise[0] = new Exercises();
