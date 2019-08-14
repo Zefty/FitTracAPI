@@ -67,8 +67,10 @@ namespace FitTracUnitTests
             {
                 WorkoutsController workoutsController = new WorkoutsController(context);
                 ActionResult<IEnumerable<Workouts>> result = await workoutsController.GetWorkouts();
-
                 Assert.IsNotNull(result);
+
+
+
             }
 
         }

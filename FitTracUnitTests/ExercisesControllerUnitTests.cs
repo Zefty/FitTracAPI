@@ -27,12 +27,14 @@ namespace FitTracUnitTests
                 ExerciseName = "Pushups",
                 ExerciseReps = 10,
                 ExerciseSets = 3,
+                WorkoutId = 1
             },
             new Exercises()
             {
                 ExerciseName = "Squats",
                 ExerciseReps = 10,
                 ExerciseSets = 4,
+                WorkoutId = 2
 
             }
         };
@@ -89,6 +91,21 @@ namespace FitTracUnitTests
                 Assert.IsInstanceOfType(result, typeof(NoContentResult));
             }
         }
+
+        [TestMethod]
+        public async Task TestGetFilteredExerciseExercisesSuccessfully()
+        {
+            using (var context = new FitTracContext(options))
+            {
+                ExercisesController exercisesController = new ExercisesController(context);
+                ActionResult<Exercises> result = await exercisesController.GetFilteredExercises(1);
+
+                Assert.IsNotNull(result);
+            }
+        }
+
+
+
 
     }
 }
