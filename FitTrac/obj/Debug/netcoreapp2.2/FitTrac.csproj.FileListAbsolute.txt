@@ -17,7 +17,6 @@ C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\bin\Debug\netcor
 C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\bin\Debug\netcoreapp2.2\FitTrac.runtimeconfig.dev.json
 C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\bin\Debug\netcoreapp2.2\FitTrac.dll
 C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\bin\Debug\netcoreapp2.2\FitTrac.pdb
-C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\obj\Debug\netcoreapp2.2\FitTrac.csprojAssemblyReference.cache
 C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\obj\Debug\netcoreapp2.2\FitTrac.csproj.CoreCompileInputs.cache
 C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\obj\Debug\netcoreapp2.2\FitTrac.RazorAssemblyInfo.cache
 C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\obj\Debug\netcoreapp2.2\FitTrac.RazorAssemblyInfo.cs
