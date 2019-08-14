@@ -67,10 +67,23 @@ namespace FitTracUnitTests
             {
                 WorkoutsController workoutsController = new WorkoutsController(context);
                 ActionResult<IEnumerable<Workouts>> result = await workoutsController.GetWorkouts();
+
+                // check if get method acutally returns something 
                 Assert.IsNotNull(result);
 
+                // convert everything into an array for easier access
+                var resultArray = result.Value.ToArray();
+                var workoutsArray = workouts.ToArray();
 
+                // compare first object of array
+                Assert.AreEqual(resultArray[0].WorkoutName, workoutsArray[0].WorkoutName);
+                Assert.AreEqual(resultArray[0].WorkoutDescription, workoutsArray[0].WorkoutDescription);
+                Assert.AreEqual(resultArray[0].WorkoutId, workoutsArray[0].WorkoutId);
 
+                // compare second object of array 
+                Assert.AreEqual(resultArray[1].WorkoutName, workoutsArray[1].WorkoutName);
+                Assert.AreEqual(resultArray[1].WorkoutDescription, workoutsArray[1].WorkoutDescription);
+                Assert.AreEqual(resultArray[1].WorkoutId, workoutsArray[1].WorkoutId);
             }
 
         }

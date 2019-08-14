@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FitTrac.Model
 {
@@ -23,5 +24,10 @@ namespace FitTrac.Model
 
         [InverseProperty("Workout")]
         public virtual ICollection<Exercises> Exercises { get; set; }
+
+        public static implicit operator Workouts(ActionResult<IEnumerable<Workouts>> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
