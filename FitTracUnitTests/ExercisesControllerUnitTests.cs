@@ -24,6 +24,7 @@ namespace FitTracUnitTests
         {
             new Exercises()
             {
+                ExerciseId = 2,
                 ExerciseName = "Pushups",
                 ExerciseReps = 10,
                 ExerciseSets = 3,
@@ -31,6 +32,7 @@ namespace FitTracUnitTests
             },
             new Exercises()
             {
+                ExerciseId = 3,
                 ExerciseName = "Squats",
                 ExerciseReps = 10,
                 ExerciseSets = 4,

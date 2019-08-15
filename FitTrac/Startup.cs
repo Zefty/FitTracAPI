@@ -33,7 +33,8 @@ namespace FitTrac
                 options.AddPolicy(MyAllowSpecificOrigins,
                 builder =>
                 {
-                    builder.WithOrigins("http://localhost:3000")
+                    builder.WithOrigins("http://localhost:3000",
+                        "https://fittracfrontend.azurewebsites.net")
                                         .AllowAnyHeader()
                                         .AllowAnyMethod();
                 });

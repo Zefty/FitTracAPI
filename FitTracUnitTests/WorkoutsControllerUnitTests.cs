@@ -20,13 +20,25 @@ namespace FitTracUnitTests
             .UseInMemoryDatabase(databaseName: "testDatabase")
             .Options;
 
+        private static readonly ICollection<Exercises> exercises = new List<Exercises>
+        {
+             new Exercises()
+             {
+                 ExerciseId = 1,
+                 ExerciseName = "Exercise 1",
+                 ExerciseReps = 5,
+                 ExerciseSets = 5,
+             }
+        };
+
+
         public static readonly IList<Workouts> workouts = new List<Workouts>
         {
             new Workouts()
             {
                 WorkoutName = "Workout 1",
                 WorkoutDescription = "Beginner Workout!",
-                IsFavourite = true, 
+                IsFavourite = true,
             },
             new Workouts()
             {
@@ -89,6 +101,29 @@ namespace FitTracUnitTests
 
         }
 
+        //[TestMethod]
+        //public async Task TestPostWorkoutSuccessfully()
+        //{
+        //    using (var context = new FitTracContext(options))
+        //    {
+        //        ICollection<Exercises> testExercise = new List<Exercises>();
+        //        Workouts testWorkout = new Workouts()
+        //        {
+        //            WorkoutId = 1,
+        //            WorkoutName = "Test Post",
+        //            WorkoutDescription = "Successful?",
+        //            IsFavourite = true,
+        //            Exercises = testExercise,
+        //        };
+
+        //        ExercisesController exercisesController = new ExercisesController(context);
+        //        WorkoutsController workoutsController = new WorkoutsController(context, exercisesController);
+        //        var result = await workoutsController.PostWorkouts(testWorkout);
+
+        //        Assert.IsNotNull(result);
+        //    }
+        //}
+
         [TestMethod]
         public async Task TestPutWorkoutSuccessfully()
         {
@@ -108,6 +143,40 @@ namespace FitTracUnitTests
 
 
         }
+
+        [TestMethod]
+        public async Task TestEditWorkoutSuccessfully()
+        {
+            using (var context = new FitTracContext(options))
+            {
+                string updateWorkoutName = "Update name of workout";
+                Workouts workouts1 = context.Workouts.Where(x => x.WorkoutName == workouts[0].WorkoutName).Single();
+                workouts1.WorkoutName = updateWorkoutName;
+
+                string updateExerciseName = "Update name of exercise";
+                ICollection<Exercises> tempExercises = new List<Exercises>
+                {
+                     new Exercises()
+                     {
+                         ExerciseId = 1,
+                         ExerciseName = updateExerciseName,
+                         ExerciseReps = 5,
+                         ExerciseSets = 5,
+                     }
+                };
+
+                workouts1.Exercises = tempExercises;
+
+                ExercisesController exercisesController = new ExercisesController(context);
+                WorkoutsController workoutsController = new WorkoutsController(context, exercisesController);
+                IActionResult result = await workoutsController.EditWorkouts(workouts1.WorkoutId, workouts1) as IActionResult;
+
+                Assert.IsNotNull(result);
+                Assert.IsInstanceOfType(result, typeof(NoContentResult));
+
+            }
+        }
+
 
     }
 }
