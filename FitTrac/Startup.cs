@@ -42,6 +42,8 @@ namespace FitTrac
             services.AddDbContext<FitTracContext>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(
             options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            //services.AddMvc().AddControllersAsServices();
+            services.AddTransient<Controllers.ExercisesController, Controllers.ExercisesController>();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -50,7 +52,7 @@ namespace FitTrac
                 {
                     Title = "FitTrac API",
                     Version = "v1",
-                    Description = "A web API providing a custom toolkit for tracking and creating fitness workouts.",
+                    Description = "A web API providing a custom toolkit for tracking, creating, and sharing fitness workouts.",
                     Contact = new Contact
                     {
                         Name = "Jaime Wu",
