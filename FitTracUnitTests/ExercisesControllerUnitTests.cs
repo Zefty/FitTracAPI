@@ -77,18 +77,18 @@ namespace FitTracUnitTests
                 var exercisesArray = exercises.ToArray();
 
                 // compare first object of array
-                Assert.AreEqual(resultArray[0].ExerciseName, exercisesArray[1].ExerciseName);
-                Assert.AreEqual(resultArray[0].ExerciseReps, exercisesArray[1].ExerciseReps);
-                Assert.AreEqual(resultArray[0].ExerciseSets, exercisesArray[1].ExerciseSets);
-                Assert.AreEqual(resultArray[0].ExerciseId, exercisesArray[1].ExerciseId);
-                Assert.AreEqual(resultArray[0].WorkoutId, exercisesArray[1].WorkoutId);
+                Assert.AreEqual(resultArray[0].ExerciseName, exercisesArray[0].ExerciseName);
+                Assert.AreEqual(resultArray[0].ExerciseReps, exercisesArray[0].ExerciseReps);
+                Assert.AreEqual(resultArray[0].ExerciseSets, exercisesArray[0].ExerciseSets);
+                Assert.AreEqual(resultArray[0].ExerciseId, exercisesArray[0].ExerciseId);
+                Assert.AreEqual(resultArray[0].WorkoutId, exercisesArray[0].WorkoutId);
 
                 // compare second object of array 
-                Assert.AreEqual(resultArray[1].ExerciseName, exercisesArray[0].ExerciseName);
-                Assert.AreEqual(resultArray[1].ExerciseReps, exercisesArray[0].ExerciseReps);
-                Assert.AreEqual(resultArray[1].ExerciseSets, exercisesArray[0].ExerciseSets);
-                Assert.AreEqual(resultArray[1].ExerciseId, exercisesArray[0].ExerciseId);
-                Assert.AreEqual(resultArray[1].WorkoutId, exercisesArray[0].WorkoutId);
+                Assert.AreEqual(resultArray[1].ExerciseName, exercisesArray[1].ExerciseName);
+                Assert.AreEqual(resultArray[1].ExerciseReps, exercisesArray[1].ExerciseReps);
+                Assert.AreEqual(resultArray[1].ExerciseSets, exercisesArray[1].ExerciseSets);
+                Assert.AreEqual(resultArray[1].ExerciseId, exercisesArray[1].ExerciseId);
+                Assert.AreEqual(resultArray[1].WorkoutId, exercisesArray[1].WorkoutId);
 
 
             }
