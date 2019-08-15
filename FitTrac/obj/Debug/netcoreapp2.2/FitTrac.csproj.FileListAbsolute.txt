@@ -25,4 +25,3 @@ C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\obj\Debug\netcor
 C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\obj\Debug\netcoreapp2.2\FitTrac.RazorTargetAssemblyInfo.cache
 C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\obj\Debug\netcoreapp2.2\FitTrac.dll
 C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\obj\Debug\netcoreapp2.2\FitTrac.pdb
-C:\Users\jaime\Documents\GitHub\MSA-Phase-2-Project-API\FitTrac\obj\Debug\netcoreapp2.2\FitTrac.csprojAssemblyReference.cache
