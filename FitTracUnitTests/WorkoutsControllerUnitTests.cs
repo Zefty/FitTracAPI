@@ -65,7 +65,8 @@ namespace FitTracUnitTests
         {
             using (var context = new FitTracContext(options))
             {
-                WorkoutsController workoutsController = new WorkoutsController(context);
+                ExercisesController exercisesController = new ExercisesController(context);
+                WorkoutsController workoutsController = new WorkoutsController(context, exercisesController);
                 ActionResult<IEnumerable<Workouts>> result = await workoutsController.GetWorkouts();
 
                 // check if get method acutally returns something 
@@ -97,7 +98,8 @@ namespace FitTracUnitTests
                 Workouts workouts1 = context.Workouts.Where(x => x.WorkoutName == workouts[0].WorkoutName).Single();
                 workouts1.WorkoutName = updateWorkoutName;
 
-                WorkoutsController workoutsController = new WorkoutsController(context);
+                ExercisesController exercisesController = new ExercisesController(context);
+                WorkoutsController workoutsController = new WorkoutsController(context, exercisesController);
                 IActionResult result = await workoutsController.PutWorkouts(workouts1.WorkoutId, workouts1) as IActionResult;
 
                 Assert.IsNotNull(result);
