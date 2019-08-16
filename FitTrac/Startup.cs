@@ -37,7 +37,8 @@ namespace FitTrac
                     builder.WithOrigins("http://localhost:3000",
                         "https://fittracfrontend.azurewebsites.net")
                                         .AllowAnyHeader()
-                                        .AllowAnyMethod();
+                                        .AllowAnyMethod()
+                                        .AllowCredentials();
                 });
                 });
 
