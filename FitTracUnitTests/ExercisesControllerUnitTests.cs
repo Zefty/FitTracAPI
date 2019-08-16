@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FitTrac.Controllers;
+﻿using FitTrac.Controllers;
 using FitTrac.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
 namespace FitTracUnitTests
@@ -103,14 +100,19 @@ namespace FitTracUnitTests
             using (var context = new FitTracContext(options))
             {
                 string updateExerciseName = "Update name of exercise";
-                Exercises exercise1 = context.Exercises.Where(x => x.ExerciseName == exercises[0].ExerciseName).Single();
+                Exercises exercise1 = context.Exercises.Where(x => x.ExerciseId == exercises[0].ExerciseId).Single();
                 exercise1.ExerciseName = updateExerciseName;
 
                 ExercisesController exercisesController = new ExercisesController(context);
                 IActionResult result = await exercisesController.PutExercises(exercise1.ExerciseId, exercise1) as IActionResult;
 
+                // checking if successfully edit exercise 
                 Assert.IsNotNull(result);
                 Assert.IsInstanceOfType(result, typeof(NoContentResult));
+
+                // checking if correct name has been updated
+                string updatedExerciseName = context.Exercises.Where(x => x.ExerciseId == exercises[0].ExerciseId).Single().ExerciseName;
+                Assert.AreEqual(updateExerciseName, updatedExerciseName);
             }
         }
 
@@ -122,7 +124,14 @@ namespace FitTracUnitTests
                 ExercisesController exercisesController = new ExercisesController(context);
                 ActionResult<Exercises> result = await exercisesController.GetFilteredExercises(1);
 
+                // temp = result.Result.ExecuteResult();
+                //// var wId = result.Value.ExerciseId;
+                //// var workoutId = result.Value.WorkoutId;
+                //var workoutId = context.Exercises.Where(x => x.ExerciseId == exercises[0].ExerciseId).Single().ExerciseId;
+
                 Assert.IsNotNull(result);
+
+
             }
         }
 
