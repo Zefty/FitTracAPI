@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FitTrac.CentralHub;
 using FitTrac.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -63,6 +64,8 @@ namespace FitTrac
                 });
             });
 
+            //Registering Azure SignalR service
+            services.AddSignalR();
 
 
 
@@ -92,9 +95,28 @@ namespace FitTrac
                 app.UseHsts();
             }
 
+            // Make sure the CORS middleware is ahead of SignalR.
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("http://localhost:3000",
+                    "https://fittracfrontend.azurewebsites.net")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+            });
+
+            // SignalR
+            app.UseFileServer();
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<SignalrHub>("/hub");
+            });
+
             app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
             app.UseMvc();
+
+
         }
     }
 }
