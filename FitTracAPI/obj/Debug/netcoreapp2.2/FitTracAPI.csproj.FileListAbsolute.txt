@@ -1,0 +1,16 @@
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\bin\Debug\netcoreapp2.2\FitTracAPI.deps.json
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\bin\Debug\netcoreapp2.2\FitTracAPI.runtimeconfig.json
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\bin\Debug\netcoreapp2.2\FitTracAPI.runtimeconfig.dev.json
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\bin\Debug\netcoreapp2.2\FitTracAPI.dll
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\bin\Debug\netcoreapp2.2\FitTracAPI.pdb
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\obj\Debug\netcoreapp2.2\FitTracAPI.csprojAssemblyReference.cache
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\obj\Debug\netcoreapp2.2\FitTracAPI.RazorAssemblyInfo.cache
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\obj\Debug\netcoreapp2.2\FitTracAPI.RazorAssemblyInfo.cs
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\obj\Debug\netcoreapp2.2\FitTracAPI.AssemblyInfoInputs.cache
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\obj\Debug\netcoreapp2.2\FitTracAPI.AssemblyInfo.cs
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\obj\Debug\netcoreapp2.2\FitTracAPI.RazorTargetAssemblyInfo.cache
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\obj\Debug\netcoreapp2.2\FitTracAPI.dll
+C:\Users\jaime\Desktop\Git\FitTracAPI\FitTracAPI\obj\Debug\netcoreapp2.2\FitTracAPI.pdb

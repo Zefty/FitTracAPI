@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jaime\\Desktop\\Git\\FitTracAPI\\FitTracAPI\\FitTracAPI\\FitTracAPI.csproj": {}
+    "C:\\Users\\jaime\\Desktop\\Git\\FitTracAPI\\FitTracAPI\\FitTracAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jaime\\Desktop\\Git\\FitTracAPI\\FitTracAPI\\FitTracAPI\\FitTracAPI.csproj": {
+    "C:\\Users\\jaime\\Desktop\\Git\\FitTracAPI\\FitTracAPI\\FitTracAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jaime\\Desktop\\Git\\FitTracAPI\\FitTracAPI\\FitTracAPI\\FitTracAPI.csproj",
+        "projectUniqueName": "C:\\Users\\jaime\\Desktop\\Git\\FitTracAPI\\FitTracAPI\\FitTracAPI.csproj",
         "projectName": "FitTracAPI",
-        "projectPath": "C:\\Users\\jaime\\Desktop\\Git\\FitTracAPI\\FitTracAPI\\FitTracAPI\\FitTracAPI.csproj",
+        "projectPath": "C:\\Users\\jaime\\Desktop\\Git\\FitTracAPI\\FitTracAPI\\FitTracAPI.csproj",
         "packagesPath": "C:\\Users\\jaime\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jaime\\Desktop\\Git\\FitTracAPI\\FitTracAPI\\FitTracAPI\\obj\\",
+        "outputPath": "C:\\Users\\jaime\\Desktop\\Git\\FitTracAPI\\FitTracAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
