@@ -3,7 +3,6 @@ using System;
 using FitTracAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FitTracAPI.Migrations
@@ -15,15 +14,12 @@ namespace FitTracAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             modelBuilder.Entity("FitTracAPI.Models.Exercise", b =>
                 {
                     b.Property<int>("ExerciseId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ExerciseName");
 
@@ -31,7 +27,8 @@ namespace FitTracAPI.Migrations
 
                     b.Property<int?>("ExerciseSets");
 
-                    b.Property<int?>("WorkoutId");
+                    b.Property<int?>("WorkoutId")
+                        .IsRequired();
 
                     b.HasKey("ExerciseId");
 
@@ -43,8 +40,7 @@ namespace FitTracAPI.Migrations
             modelBuilder.Entity("FitTracAPI.Models.Workout", b =>
                 {
                     b.Property<int>("WorkoutId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<bool>("IsFavourite");
 
@@ -61,7 +57,8 @@ namespace FitTracAPI.Migrations
                 {
                     b.HasOne("FitTracAPI.Models.Workout", "Workout")
                         .WithMany("Exercises")
-                        .HasForeignKey("WorkoutId");
+                        .HasForeignKey("WorkoutId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

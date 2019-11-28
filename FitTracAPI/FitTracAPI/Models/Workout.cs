@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,11 +16,7 @@ namespace FitTracAPI.Models
         }
 
         public int WorkoutId { get; set; }
-/*        [Required]
-        [StringLength(255)]*/
         public string WorkoutName { get; set; }
-/*        [Required]
-        [StringLength(255)]*/
         public string WorkoutDescription { get; set; }
         public bool IsFavourite { get; set; }
 

@@ -14,8 +14,7 @@ namespace FitTracAPI.Models
             using (var context = new FitTracAPIContext(
                 serviceProvider.GetRequiredService<DbContextOptions<FitTracAPIContext>>()))
             {
-                // Look for any movies.
-                if (context.Workout.Count() > 0 && context.Exercise.Count() > 0)
+                if (context.Workout.Count() > 0)
                 {
                     return;   // DB has been seeded
                 }
@@ -27,19 +26,16 @@ namespace FitTracAPI.Models
                         WorkoutName = "Seed Workout",
                         WorkoutDescription = "Seed Workout",
                         IsFavourite = false,
-                        Exercises = null,
-                    }
-                );
-
-
-                context.Exercise.AddRange(
-                    new Exercise
-                    {
-                        ExerciseId = 0,
-                        ExerciseName = "Seed Exercise",
-                        ExerciseReps = 0,
-                        ExerciseSets = 0,
-                        WorkoutId = 0,
+                        Exercises = new List<Exercise> {
+                            new Exercise
+                            {
+                                ExerciseId = 0,
+                                ExerciseName = "Seed Exercise",
+                                ExerciseReps = 0,
+                                ExerciseSets = 0,
+                                WorkoutId = 0,
+                            }
+                        },     
                     }
                 );
 

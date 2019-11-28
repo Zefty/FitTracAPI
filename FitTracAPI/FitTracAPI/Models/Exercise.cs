@@ -10,8 +10,6 @@ namespace FitTracAPI.Models
     {
         public int ExerciseId { get; set; }
         public int? WorkoutId { get; set; }
-/*        [Required]
-        [StringLength(255)]*/
         public string ExerciseName { get; set; }
         public int? ExerciseReps { get; set; }
         public int? ExerciseSets { get; set; }
