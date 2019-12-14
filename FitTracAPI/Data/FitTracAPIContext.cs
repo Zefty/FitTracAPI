@@ -17,11 +17,10 @@ namespace FitTracAPI.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Exercise>()
-                           .HasOne(d => d.Workout)
-                           .WithMany(p => p.Exercises)
-                           .HasForeignKey(d => d.WorkoutId)
+                           .HasOne(p => p.Workout)
+                           .WithMany(b => b.Exercises)
                            .OnDelete(DeleteBehavior.Cascade)
-                           .HasConstraintName("WorkoutId");
+                           .IsRequired();
         }
 
         public DbSet<FitTracAPI.Models.Exercise> Exercise { get; set; }
