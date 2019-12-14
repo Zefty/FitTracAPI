@@ -27,8 +27,7 @@ namespace FitTracAPI.Migrations
 
                     b.Property<int?>("ExerciseSets");
 
-                    b.Property<int?>("WorkoutId")
-                        .IsRequired();
+                    b.Property<int?>("WorkoutId");
 
                     b.HasKey("ExerciseId");
 
@@ -58,6 +57,7 @@ namespace FitTracAPI.Migrations
                     b.HasOne("FitTracAPI.Models.Workout", "Workout")
                         .WithMany("Exercises")
                         .HasForeignKey("WorkoutId")
+                        .HasConstraintName("WorkoutId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -27,7 +27,7 @@ namespace FitTracAPI.Migrations
                 {
                     ExerciseId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    WorkoutId = table.Column<int>(nullable: false),
+                    WorkoutId = table.Column<int>(nullable: true),
                     ExerciseName = table.Column<string>(nullable: true),
                     ExerciseReps = table.Column<int>(nullable: true),
                     ExerciseSets = table.Column<int>(nullable: true)
@@ -36,7 +36,7 @@ namespace FitTracAPI.Migrations
                 {
                     table.PrimaryKey("PK_Exercise", x => x.ExerciseId);
                     table.ForeignKey(
-                        name: "FK_Exercise_Workout_WorkoutId",
+                        name: "WorkoutId",
                         column: x => x.WorkoutId,
                         principalTable: "Workout",
                         principalColumn: "WorkoutId",

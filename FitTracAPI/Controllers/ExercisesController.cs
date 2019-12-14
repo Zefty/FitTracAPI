@@ -41,6 +41,30 @@ namespace FitTracAPI.Controllers
             return exercise;
         }
 
+        // GET: api/Exercises/5
+        [HttpGet("FilterdExercise/")]
+        public async Task<ActionResult<Exercise>> GetFilteredExercises(int WorkoutId)
+        {
+            //if (WorkoutId == 0)
+            //{
+            //    Exercises[] defaultExercise = new Exercises[1];
+            //    defaultExercise[0] = new Exercises();
+            //    defaultExercise[0].ExerciseName = "";
+            //    defaultExercise[0].ExerciseReps = 0;
+            //    defaultExercise[0].ExerciseSets = 0;
+            //    return Ok(defaultExercise);
+            //} 
+
+            var exercises = await _context.Exercise.Where(x => x.WorkoutId == WorkoutId).ToListAsync();
+
+            if (exercises == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(exercises);
+        }
+
         // PUT: api/Exercises/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutExercise(int id, Exercise exercise)

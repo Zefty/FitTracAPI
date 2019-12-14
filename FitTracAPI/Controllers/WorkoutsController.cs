@@ -14,10 +14,12 @@ namespace FitTracAPI.Controllers
     public class WorkoutsController : ControllerBase
     {
         private readonly FitTracAPIContext _context;
+        private readonly Controllers.ExercisesController _exercisesController;
 
-        public WorkoutsController(FitTracAPIContext context)
+        public WorkoutsController(FitTracAPIContext context, Controllers.ExercisesController exercisesController)
         {
             _context = context;
+            _exercisesController = exercisesController;
         }
 
         // GET: api/Workouts
@@ -69,6 +71,62 @@ namespace FitTracAPI.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpPut("EditWorkouts/")]
+        public async Task<IActionResult> EditWorkouts(int id, Workout workout)
+        {
+            if (id != workout.WorkoutId)
+            {
+                return BadRequest();
+            }
+
+
+
+
+            _context.Entry(workout).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!WorkoutExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            foreach (Exercise exercise in workout.Exercises)
+            {
+                if (exercise.ExerciseId == 0)
+                {
+                    await _exercisesController.PostExercise(exercise);
+                }
+                else
+                {
+                    await _exercisesController.PutExercise(exercise.ExerciseId, exercise);
+                }
+            }
+
+            //for (int i = 0; i < workouts.Exercises.Count; i++)
+            //{
+            //    if (workouts.Exercises.ElementAt(i).ExerciseId == 0)
+            //    {
+            //        await _exercisesController.PostExercises(exercises[i]);
+            //    } else
+            //    {
+            //        await _exercisesController.PutExercises(exercises[i].ExerciseId, exercises[i]);
+            //    }
+            //}
+
+            return NoContent();
+
         }
 
         // POST: api/Workouts
