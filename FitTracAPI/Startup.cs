@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using FitTracAPI.CentralHub;
 using FitTracAPI.Models;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -34,6 +35,9 @@ namespace FitTracAPI
                     options.UseSqlite(Configuration.GetConnectionString("FitTracAPIContext")));
 
             services.AddTransient<Controllers.ExercisesController, Controllers.ExercisesController>();
+
+            //Registering Azure SignalR service
+            services.AddSignalR();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -76,6 +80,13 @@ namespace FitTracAPI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            // SignalR
+            app.UseFileServer();
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<SignalrHub>("/hub");
+            });
 
             app.UseHttpsRedirection();
             app.UseMvc();
