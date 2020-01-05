@@ -14,17 +14,15 @@ namespace FitTracAPI.Controllers
     public class WorkoutsController : ControllerBase
     {
         private readonly FitTracAPIContext _context;
-        private readonly ExercisesController _exercisesController;
 
-        public WorkoutsController(FitTracAPIContext context, ExercisesController exercisesController)
+        public WorkoutsController(FitTracAPIContext context)
         {
             _context = context;
-            _exercisesController = exercisesController;
         }
 
         // GET: api/Workouts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Workout>>> GetWorkout()
+        public async Task<ActionResult<IEnumerable<Workout>>> GetWorkouts()
         {
             return await _context.Workout.ToListAsync();
         }
@@ -39,8 +37,22 @@ namespace FitTracAPI.Controllers
             {
                 return NotFound();
             }
-
+            
             return workout;
+        }
+
+        // GET: api/Workouts/WorkoutsAndExercises?=1
+        [HttpGet("WorkoutsAndExercises")]
+        public async Task<ActionResult<IEnumerable<Workout>>> GetWorkoutsAndExercises(int? WorkoutId)
+        {
+            if (WorkoutId.HasValue)
+            {
+                return await _context.Workout.Where(w => w.WorkoutId == WorkoutId).Include(w => w.Exercises).ToListAsync();
+            } else
+            {
+                return await _context.Workout.Include(w => w.Exercises).ToListAsync();
+            }
+            
         }
 
         // PUT: api/Workouts/5
@@ -73,18 +85,23 @@ namespace FitTracAPI.Controllers
             return NoContent();
         }
 
-        [HttpPut("EditWorkouts/")]
-        public async Task<IActionResult> EditWorkouts(int id, Workout workout)
+        [HttpPut("EditWorkout{id}")]
+        public async Task<IActionResult> EditWorkout(int id, Workout workout)
         {
             if (id != workout.WorkoutId)
             {
                 return BadRequest();
             }
 
-
-
-
             _context.Entry(workout).State = EntityState.Modified;
+
+            foreach (Exercise exercise in workout.Exercises)
+            {
+                if (exercise.WorkoutId == id)
+                {
+                    _context.Entry(exercise).State = exercise.ExerciseId == 0 ? EntityState.Added : EntityState.Modified;
+                }
+            }
 
             try
             {
@@ -101,29 +118,6 @@ namespace FitTracAPI.Controllers
                     throw;
                 }
             }
-
-            foreach (Exercise exercise in workout.Exercises)
-            {
-                if (exercise.ExerciseId == 0)
-                {
-                    await _exercisesController.PostExercise(exercise);
-                }
-                else
-                {
-                    await _exercisesController.PutExercise(exercise.ExerciseId, exercise);
-                }
-            }
-
-            //for (int i = 0; i < workouts.Exercises.Count; i++)
-            //{
-            //    if (workouts.Exercises.ElementAt(i).ExerciseId == 0)
-            //    {
-            //        await _exercisesController.PostExercises(exercises[i]);
-            //    } else
-            //    {
-            //        await _exercisesController.PutExercises(exercises[i].ExerciseId, exercises[i]);
-            //    }
-            //}
 
             return NoContent();
         }

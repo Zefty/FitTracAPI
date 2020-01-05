@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitTracAPI.Migrations
 {
     [DbContext(typeof(FitTracAPIContext))]
-    [Migration("20191128224531_InitialCreate")]
+    [Migration("20200103071448_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,8 +29,7 @@ namespace FitTracAPI.Migrations
 
                     b.Property<int?>("ExerciseSets");
 
-                    b.Property<int?>("WorkoutId")
-                        .IsRequired();
+                    b.Property<int?>("WorkoutId");
 
                     b.HasKey("ExerciseId");
 
@@ -60,6 +59,7 @@ namespace FitTracAPI.Migrations
                     b.HasOne("FitTracAPI.Models.Workout", "Workout")
                         .WithMany("Exercises")
                         .HasForeignKey("WorkoutId")
+                        .HasConstraintName("WorkoutId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

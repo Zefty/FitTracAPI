@@ -9,12 +9,12 @@ namespace FitTracAPI.Models
     public class Exercise
     {
         public int ExerciseId { get; set; }
-        public int? WorkoutId { get; set; }
         public string ExerciseName { get; set; }
         public int? ExerciseReps { get; set; }
         public int? ExerciseSets { get; set; }
 
         [ForeignKey("WorkoutId")]
+        public int? WorkoutId { get; set; }
         [InverseProperty("Exercises")]
         public virtual Workout Workout { get; set; }
     }

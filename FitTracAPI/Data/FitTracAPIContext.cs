@@ -19,8 +19,9 @@ namespace FitTracAPI.Models
             modelBuilder.Entity<Exercise>()
                            .HasOne(p => p.Workout)
                            .WithMany(b => b.Exercises)
+                           .HasForeignKey(d => d.WorkoutId)
                            .OnDelete(DeleteBehavior.Cascade)
-                           .IsRequired();
+                           .HasConstraintName("WorkoutId");
         }
 
         public DbSet<FitTracAPI.Models.Exercise> Exercise { get; set; }

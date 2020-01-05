@@ -29,12 +29,11 @@ namespace FitTracAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(
+            options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddDbContext<FitTracAPIContext>(options =>
                     options.UseSqlite(Configuration.GetConnectionString("FitTracAPIContext")));
-
-            services.AddTransient<Controllers.ExercisesController, Controllers.ExercisesController>();
 
             //Registering Azure SignalR service
             services.AddSignalR();
