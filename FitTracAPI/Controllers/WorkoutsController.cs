@@ -85,7 +85,7 @@ namespace FitTracAPI.Controllers
             return NoContent();
         }
 
-        [HttpPut("EditWorkout/{id}")]
+        [HttpPut("EditWorkout")]
         public async Task<IActionResult> EditWorkout(int id, Workout workout)
         {
             if (id != workout.WorkoutId)
