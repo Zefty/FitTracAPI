@@ -45,6 +45,7 @@ namespace FitTracAPI.Controllers
         [HttpGet("WorkoutsAndExercises")]
         public async Task<ActionResult<IEnumerable<Workout>>> GetWorkoutsAndExercises(int? WorkoutId)
         {
+            System.Diagnostics.Debug.WriteLine("**********************************");
             if (WorkoutId.HasValue)
             {
                 return await _context.Workout.Where(w => w.WorkoutId == WorkoutId).Include(w => w.Exercises).ToListAsync();
@@ -85,21 +86,80 @@ namespace FitTracAPI.Controllers
             return NoContent();
         }
 
-        [HttpPut("EditWorkout")]
+        [HttpPut("EditWorkout/")]
         public async Task<IActionResult> EditWorkout(int id, Workout workout)
         {
+            /*            if (id != workout.WorkoutId)
+                        {
+                            return BadRequest();
+                        }
+
+                        _context.Entry(workout).State = EntityState.Modified;
+
+                        foreach (Exercise exercise in workout.Exercises)
+                        {
+                            if (exercise.WorkoutId == id)
+                            {
+                                _context.Entry(exercise).State = exercise.ExerciseId == 0 ? EntityState.Added : EntityState.Modified;
+                            }
+                        }
+
+                        try
+                        {
+                            await _context.SaveChangesAsync();
+                        }
+                        catch (DbUpdateConcurrencyException)
+                        {
+                            if (!WorkoutExists(id))
+                            {
+                                return NotFound();
+                            }
+                            else
+                            {
+                                throw;
+                            }
+                        }
+
+                        return NoContent();*/
+
             if (id != workout.WorkoutId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(workout).State = EntityState.Modified;
+            var existingWorkout = _context.Workout.Where(w => w.WorkoutId == workout.WorkoutId).Include(w => w.Exercises).SingleOrDefault();
 
-            foreach (Exercise exercise in workout.Exercises)
+            if (existingWorkout != null)
             {
-                if (exercise.WorkoutId == id)
+                //_context.Entry(workout).State = EntityState.Modified;
+                _context.Entry(existingWorkout).CurrentValues.SetValues(workout);
+
+                foreach (Exercise existingExercise in existingWorkout.Exercises)
                 {
-                    _context.Entry(exercise).State = exercise.ExerciseId == 0 ? EntityState.Added : EntityState.Modified;
+                    if (!workout.Exercises.Any(e => e.ExerciseId == existingExercise.ExerciseId))
+                    {
+                        _context.Exercise.Remove(existingExercise);
+                    }
+                }
+
+                foreach (Exercise incomingExercise in workout.Exercises)
+                {
+                    var existingExercise = existingWorkout.Exercises.Where(e => e.ExerciseId == incomingExercise.ExerciseId).SingleOrDefault();
+
+                    if (existingExercise != null)
+                    {
+                        _context.Entry(existingExercise).CurrentValues.SetValues(incomingExercise);
+                    }
+                    else
+                    {
+                        existingWorkout.Exercises.Add(new Exercise() {
+                            ExerciseName = incomingExercise.ExerciseName,
+                            ExerciseReps = incomingExercise.ExerciseReps,
+                            ExerciseSets = incomingExercise.ExerciseSets,
+                            Workout = incomingExercise.Workout,
+                            WorkoutId = incomingExercise.WorkoutId,
+                        });
+                    }
                 }
             }
 
