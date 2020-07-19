@@ -10,8 +10,8 @@ namespace FitTracAPI.Models
     {
         public int ExerciseId { get; set; }
         public string ExerciseName { get; set; }
-        public string ExerciseReps { get; set; }
-        public string ExerciseSets { get; set; }
+        public double ExerciseReps { get; set; }
+        public double ExerciseSets { get; set; }
 
         [ForeignKey("WorkoutId")]
         public int? WorkoutId { get; set; }
